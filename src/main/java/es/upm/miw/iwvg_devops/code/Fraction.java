@@ -65,6 +65,36 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
+    public boolean isProper() {
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper() {
+        return !isProper() && this.numerator != this.denominator;
+    }
+
+    public boolean isEquivalent(Fraction fraction) {
+        return this.extremeProduct(fraction) == this.middleProduct(fraction);
+    }
+
+    private int extremeProduct(Fraction fraction) {
+        return this.getNumerator() * fraction.getDenominator();
+    }
+
+    private int middleProduct(Fraction fraction) {
+        return this.getDenominator() * fraction.getNumerator();
+    }
+
+    public Fraction divide(Fraction fraction) {
+        return new Fraction(this.extremeProduct(fraction), this.middleProduct(fraction));
+    }
+
+    public Fraction multiplay(Fraction fraction) {
+        int newNumerator = this.getNumerator() * fraction.getNumerator();
+        int newDenominator = this.getDenominator() * fraction.getDenominator();
+        return new Fraction(newNumerator, newDenominator);
+    }
+
     @Override
     public String toString() {
         return "Fraction{" +
