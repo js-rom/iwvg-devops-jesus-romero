@@ -8,3 +8,4 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=js-rom_iwvg-devops-jesus-romero&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=js-rom_iwvg-devops-jesus-romero)
 
+[![Heroku broken](https://iwvg-devops-jesus-romero-a9ad2c2fe74c.herokuapp.com/system/version-badge)](https://iwvg-devops-jesus-romero-a9ad2c2fe74c.herokuapp.com/webjars/swagger-ui/index.html)
