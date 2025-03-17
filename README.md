@@ -6,3 +6,5 @@
 
 [![CI](https://github.com/js-rom/iwvg-devops-jesus-romero/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/js-rom/iwvg-devops-jesus-romero/actions/workflows/ci.yml)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=js-rom_iwvg-devops-jesus-romero&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=js-rom_iwvg-devops-jesus-romero)
+
