@@ -7,19 +7,32 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
+class UserTest {
 
     User user;
 
     @BeforeEach
     void Before() {
 
-        List<Fraction> fractions1 = List.of(
-                new Fraction(0, 1),
-                new Fraction(1, 1),
-                new Fraction(2, 1));
+        this.user = new UsersDatabase().findAll()
+                .filter(user -> "1".equals(user.getId()))
+                .findFirst().orElse(null);
 
-        this.user = new User("1", "Oscar", "Fernandez", fractions1);
+        this.user.setName("Oscar");
+        this.user.setFamilyName("Fernandez");
+    }
+
+    @Test
+    void testSetFractions() {
+        this.user = new User();
+
+        List<Fraction> fractions = new UsersDatabase().findAll()
+                .filter(user -> "1".equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream())
+                .toList();
+
+        this.user.setFractions(fractions);
+        assertEquals(fractions, this.user.getFractions());
     }
 
     @Test
@@ -53,4 +66,3 @@ public class UserTest {
         assertEquals("O.", user.initials());
     }
 }
-
