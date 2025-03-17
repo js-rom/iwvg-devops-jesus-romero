@@ -13,7 +13,9 @@ public class FractionTest {
 
     @BeforeEach
     void before() {
-        this.fraction = new Fraction(2, 4);
+        this.fraction = new Fraction();
+        this.fraction.setNumerator(2);
+        this.fraction.setDenominator(4);
     }
 
     @Test
