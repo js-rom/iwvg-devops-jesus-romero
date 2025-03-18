@@ -1,6 +1,5 @@
 package es.upm.miw.iwvg_devops.code;
 
-import org.apache.logging.log4j.LogManager;
 import org.springframework.stereotype.Service;
 
 import java.util.stream.Stream;
@@ -21,9 +20,7 @@ public class Searches {
 
     public Stream<Integer> findFractionNumeratorByUserFamilyName(String userFamilyName) {
         return new UsersDatabase().findAll()
-                .peek(x -> LogManager.getLogger(this.getClass()).info("before: " + x))
                 .filter(user -> userFamilyName.equals(user.getFamilyName()))
-                .peek(x -> LogManager.getLogger(this.getClass()).info("after: " + x))
                 .flatMap(user -> user.getFractions().stream())
                 .map(Fraction::getNumerator);
     }
