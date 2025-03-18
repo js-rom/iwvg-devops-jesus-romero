@@ -89,9 +89,9 @@ public class Fraction {
         return new Fraction(this.extremeProduct(fraction), this.middleProduct(fraction));
     }
 
-    public Fraction multiplay(Fraction fraction) {
-        int newNumerator = this.getNumerator() * fraction.getNumerator();
-        int newDenominator = this.getDenominator() * fraction.getDenominator();
+    public static Fraction multiplay(Fraction a, Fraction b) {
+        int newNumerator = a.getNumerator() * b.getNumerator();
+        int newDenominator = a.getDenominator() * b.getDenominator();
         return new Fraction(newNumerator, newDenominator);
     }
 
