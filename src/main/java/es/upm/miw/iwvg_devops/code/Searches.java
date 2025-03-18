@@ -64,4 +64,11 @@ public class Searches {
                         .orElse(null);
             }
 
+            public Double findFirstDecimalFractionByUserName(String name) {
+                return new UsersDatabase().findAll()
+                        .filter(user -> user.getName().equals(name))
+                        .flatMap(user -> user.getFractions().stream()
+                                .map(fraction -> fraction.decimal()))
+                        .findFirst().orElse(null);
+            }
 }
