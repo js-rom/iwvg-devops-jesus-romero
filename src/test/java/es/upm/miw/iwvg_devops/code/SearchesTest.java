@@ -56,9 +56,13 @@ class SearchesTest {
     }
 
     @Test
-    void findFirstDecimalFractionByUserName() {
+    void testFindFirstDecimalFractionByUserName() {
         assertEquals(0.0, new Searches().findFirstDecimalFractionByUserName("Oscar"));
         assertEquals(2.0, new Searches().findFirstDecimalFractionByUserName("Ana"));
     }
 
+    @Test
+    void testFindUserIdByAllProperFraction() {
+        assertEquals(List.of("7"), new Searches().findUserIdByAllProperFraction().toList());
+    }
 }

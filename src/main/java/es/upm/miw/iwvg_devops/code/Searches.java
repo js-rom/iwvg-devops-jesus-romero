@@ -71,4 +71,13 @@ public class Searches {
                                 .map(fraction -> fraction.decimal()))
                         .findFirst().orElse(null);
             }
+
+            public Stream<String> findUserIdByAllProperFraction() {
+
+                return new UsersDatabase().findAll()
+                        .filter(user -> user.getFractions()
+                                .stream()
+                                .allMatch(fraction -> fraction.isProper()))
+                        .map(user -> user.getId());
+            }
 }
