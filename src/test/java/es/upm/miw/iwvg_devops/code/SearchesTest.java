@@ -70,16 +70,25 @@ class SearchesTest {
 
     @Test
     void testFindDecimalImproperFractionByUserName() {
-        assertEquals(List.of(2.0, 1.3333333333333333), new Searches().findDecimalImproperFractionByUserName("Ana").toList());
+        assertEquals(List.of(2.0, 1.3333333333333333),
+                new Searches().findDecimalImproperFractionByUserName("Ana").toList());
         assertEquals(List.of(2.0, -0.5), new Searches().findDecimalImproperFractionByUserName("Oscar").toList());
     }
 
     @Test
     void testFindFirstProperFractionByUserId() {
-        assertEquals(new Fraction(0, 1).getNumerator(), new Searches().findFirstProperFractionByUserId("1").getNumerator());
-        assertEquals(new Fraction(0, 1).getDenominator(), new Searches().findFirstProperFractionByUserId("1").getDenominator());
+        assertEquals(new Fraction(0, 1).getNumerator(),
+                new Searches().findFirstProperFractionByUserId("1").getNumerator());
+        assertEquals(new Fraction(0, 1).getDenominator(),
+                new Searches().findFirstProperFractionByUserId("1").getDenominator());
 
         assertThrows(NoSuchElementException.class, () -> new Searches().findFirstProperFractionByUserId("4"));
+    }
+
+    @Test
+    void testFindUserFamilyNameByImproperFraction() {
+        assertEquals(List.of("Fernandez", "Blanco", "López", "Blanco", "Torres"),
+                new Searches().findUserFamilyNameByImproperFraction().toList());
     }
 
 }
