@@ -99,4 +99,11 @@ public class Searches {
                                 .orElseThrow();
         }
 
+        public Stream<String> findUserFamilyNameByImproperFraction() {
+                return new UsersDatabase().findAll()
+                                .filter(user -> user.getFractions().stream()
+                                                .anyMatch(fraction -> fraction.isImproper()))
+                                .map(user -> user.getFamilyName());
+        }
+
 }
