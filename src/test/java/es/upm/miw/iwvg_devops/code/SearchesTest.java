@@ -2,8 +2,10 @@ package es.upm.miw.iwvg_devops.code;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
@@ -70,6 +72,14 @@ class SearchesTest {
     void testFindDecimalImproperFractionByUserName() {
         assertEquals(List.of(2.0, 1.3333333333333333), new Searches().findDecimalImproperFractionByUserName("Ana").toList());
         assertEquals(List.of(2.0, -0.5), new Searches().findDecimalImproperFractionByUserName("Oscar").toList());
+    }
+
+    @Test
+    void testFindFirstProperFractionByUserId() {
+        assertEquals(new Fraction(0, 1).getNumerator(), new Searches().findFirstProperFractionByUserId("1").getNumerator());
+        assertEquals(new Fraction(0, 1).getDenominator(), new Searches().findFirstProperFractionByUserId("1").getDenominator());
+
+        assertThrows(NoSuchElementException.class, () -> new Searches().findFirstProperFractionByUserId("4"));
     }
 
 }
