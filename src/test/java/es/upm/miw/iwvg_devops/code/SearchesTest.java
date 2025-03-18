@@ -55,4 +55,10 @@ class SearchesTest {
         assertEquals(new Fraction(0, 1).getDenominator(), division.getDenominator());
     }
 
+    @Test
+    void findFirstDecimalFractionByUserName() {
+        assertEquals(0.0, new Searches().findFirstDecimalFractionByUserName("Oscar"));
+        assertEquals(2.0, new Searches().findFirstDecimalFractionByUserName("Ana"));
+    }
+
 }
