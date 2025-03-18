@@ -80,4 +80,12 @@ public class Searches {
                                 .allMatch(fraction -> fraction.isProper()))
                         .map(user -> user.getId());
             }
+
+            public Stream<Double> findDecimalImproperFractionByUserName(String name) {
+                return new UsersDatabase().findAll()
+                        .filter(user -> user.getName().equals(name))
+                        .flatMap(user -> user.getFractions().stream())
+                        .filter(fraction -> fraction.isImproper())
+                        .map(fraction -> fraction.decimal());
+            }
 }
