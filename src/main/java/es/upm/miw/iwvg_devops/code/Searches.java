@@ -56,36 +56,47 @@ public class Searches {
 
         public Fraction findFirstFractionDivisionByUserId(String id) {
                 return new UsersDatabase().findAll()
-                        .filter(user -> user.getId().equals(id))
-                        .flatMap(user -> user.getFractions().stream()
-                                .limit(2)) // limit preserves the encounter order by default if the stream has an ordered
-                                           // source (such as lists or arrays)
-                        .reduce((subtotal, item) -> subtotal.divide(item))
-                        .orElse(null);
-            }
+                                .filter(user -> user.getId().equals(id))
+                                .flatMap(user -> user.getFractions().stream()
+                                                .limit(2)) // limit preserves the encounter order by default if the
+                                                           // stream has an ordered
+                                                           // source (such as lists or arrays)
+                                .reduce((subtotal, item) -> subtotal.divide(item))
+                                .orElse(null);
+        }
 
-            public Double findFirstDecimalFractionByUserName(String name) {
+        public Double findFirstDecimalFractionByUserName(String name) {
                 return new UsersDatabase().findAll()
-                        .filter(user -> user.getName().equals(name))
-                        .flatMap(user -> user.getFractions().stream()
-                                .map(fraction -> fraction.decimal()))
-                        .findFirst().orElse(null);
-            }
+                                .filter(user -> user.getName().equals(name))
+                                .flatMap(user -> user.getFractions().stream()
+                                                .map(fraction -> fraction.decimal()))
+                                .findFirst().orElse(null);
+        }
 
-            public Stream<String> findUserIdByAllProperFraction() {
+        public Stream<String> findUserIdByAllProperFraction() {
 
                 return new UsersDatabase().findAll()
-                        .filter(user -> user.getFractions()
-                                .stream()
-                                .allMatch(fraction -> fraction.isProper()))
-                        .map(user -> user.getId());
-            }
+                                .filter(user -> user.getFractions()
+                                                .stream()
+                                                .allMatch(fraction -> fraction.isProper()))
+                                .map(user -> user.getId());
+        }
 
-            public Stream<Double> findDecimalImproperFractionByUserName(String name) {
+        public Stream<Double> findDecimalImproperFractionByUserName(String name) {
                 return new UsersDatabase().findAll()
-                        .filter(user -> user.getName().equals(name))
-                        .flatMap(user -> user.getFractions().stream())
-                        .filter(fraction -> fraction.isImproper())
-                        .map(fraction -> fraction.decimal());
-            }
+                                .filter(user -> user.getName().equals(name))
+                                .flatMap(user -> user.getFractions().stream())
+                                .filter(fraction -> fraction.isImproper())
+                                .map(fraction -> fraction.decimal());
+        }
+
+        public Fraction findFirstProperFractionByUserId(String id) {
+                return new UsersDatabase().findAll()
+                                .filter(user -> user.getId().equals(id))
+                                .flatMap(user -> user.getFractions().stream())
+                                .filter(fraction -> fraction.isProper())
+                                .findFirst()
+                                .orElseThrow();
+        }
+
 }
