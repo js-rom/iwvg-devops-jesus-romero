@@ -65,4 +65,11 @@ class SearchesTest {
     void testFindUserIdByAllProperFraction() {
         assertEquals(List.of("7"), new Searches().findUserIdByAllProperFraction().toList());
     }
+
+    @Test
+    void testFindDecimalImproperFractionByUserName() {
+        assertEquals(List.of(2.0, 1.3333333333333333), new Searches().findDecimalImproperFractionByUserName("Ana").toList());
+        assertEquals(List.of(2.0, -0.5), new Searches().findDecimalImproperFractionByUserName("Oscar").toList());
+    }
+
 }
