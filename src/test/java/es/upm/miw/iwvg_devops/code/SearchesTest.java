@@ -47,4 +47,12 @@ class SearchesTest {
         assertEquals(new Fraction(0, 1).getDenominator(), multiplication.getDenominator());
     }
 
+    @Test
+    void testfindFirstFractionDivisionByUserId() {
+        Fraction division = new Searches().findFirstFractionDivisionByUserId("1");
+        assertInstanceOf(Fraction.class, division);
+        assertEquals(new Fraction(0, 1).getNumerator(), division.getNumerator());
+        assertEquals(new Fraction(0, 1).getDenominator(), division.getDenominator());
+    }
+
 }

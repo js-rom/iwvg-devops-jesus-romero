@@ -54,4 +54,14 @@ public class Searches {
 
         }
 
+        public Fraction findFirstFractionDivisionByUserId(String id) {
+                return new UsersDatabase().findAll()
+                        .filter(user -> user.getId().equals(id))
+                        .flatMap(user -> user.getFractions().stream()
+                                .limit(2)) // limit preserves the encounter order by default if the stream has an ordered
+                                           // source (such as lists or arrays)
+                        .reduce((subtotal, item) -> subtotal.divide(item))
+                        .orElse(null);
+            }
+
 }
