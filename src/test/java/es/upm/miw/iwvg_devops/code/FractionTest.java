@@ -61,7 +61,7 @@ public class FractionTest {
 
     @Test
     void testMultiply() {
-        fraction = fraction.multiplay(new Fraction(2, 4));
+        fraction = Fraction.multiplay(fraction, new Fraction(2, 4));
         assertEquals(4, fraction.getNumerator());
         assertEquals(16, fraction.getDenominator());
     }
